@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+<script>
+  let buttonsArr = [];
+  const secretWord = 'blackberry'
+  function pressedButtons(e) {
+    buttonsArr.push(e.key);
+    /* if (buttonsArr.length > secretWord.length) {
+      buttonsArr.shift()
+    } */ //my thoughts (remember about changing indexes!)
+    buttonsArr.splice(-secretWord.length - 1, buttonsArr.length - secretWord.length);    
+    console.log(e.key)
+    console.log(buttonsArr)
+    if (buttonsArr.join('') == secretWord) {
+      console.log('BINGO!')
+      cornify_add()
+    }
+  }
+
+  window.addEventListener('keyup', pressedButtons)
+</script>
+</body>
+</html>
